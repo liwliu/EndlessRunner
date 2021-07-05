@@ -6,9 +6,12 @@ class Play extends Phaser.Scene {
     preload() {
         //load assets here
         this.load.image('platform', './assets/img/platform.png');
+        this.load.image('female', './assets/img/femaleHumanEndless.png')
+        this.load.image('male', './assets/img/maleHumanEndless.png')
     }
 
     create() {
+        window.playScene = this;
         //spawn 3 platforms per level starting at 300 pixels apart
         this.plat1 = new Platform(this, game.config.width + borderUISize*6, borderUISize*2, 'platform', 0).setOrigin(0, 0);
         this.plat2 = new Platform(this, game.config.width + borderUISize*6 - 280, borderUISize*2, 'platform', 0).setOrigin(0, 0);
@@ -26,7 +29,6 @@ class Play extends Phaser.Scene {
         this.plat14 = new Platform(this, game.config.width + borderUISize*6 - 280, borderUISize*14, 'platform', 0).setOrigin(0, 0);
         this.plat15 = new Platform(this, game.config.width + borderUISize*6 - 560, borderUISize*14, 'platform', 0).setOrigin(0, 0);
     }
-
     update() {
         this.plat1.update();
         this.plat2.update();
