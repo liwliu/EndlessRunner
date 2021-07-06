@@ -12,7 +12,9 @@ class Menu extends Phaser.Scene {
 
     create() {
 
-        this.sound.play('menuMusic');
+       let menuMusic = this.sound.add('menuMusic');
+       menuMusic.play({loop: true});
+       
 
         let menuConfig = {
             fontFamily: 'Impact',

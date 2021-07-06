@@ -14,9 +14,10 @@ class Player extends Phaser.GameObjects.Sprite {
     }
 
     update() {
-        if (keyW.isDown && this.y < this.width + borderUISize){
+        if (keyW.isDown && this.y < this.width + borderUISize ){
             // jump
             // this.y += this.moveSpeed;
+            this.y += this.moveSpeed;
         }
         if (keyA.isDown && this.x >= borderUISize + this.width) {
             this.x -= this.moveSpeed;
@@ -26,6 +27,7 @@ class Player extends Phaser.GameObjects.Sprite {
 
         if (keyS.isDown && this.y > borderUISize){
             // drop down.
+            this.y -= this.moveSpeed;
         }
     }
 
