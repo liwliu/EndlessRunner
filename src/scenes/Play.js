@@ -10,7 +10,6 @@ class Play extends Phaser.Scene {
         this.load.image('male', './assets/img/maleHumanEndless.png')
         this.load.image('alien', './assets/img/characterEndlessRunner.png')
         this.load.image('background', './assets/img/backgroundEndlessRunner.png')
-        this.load.spritesheet('ufo', './assets/img/UFO Animation.png', {frameWidth:64, frameHeight:64, startFrame: 0, endFrame:13});
         this.load.spritesheet('bigUFO', './assets/img/UFOanim.png',{frameWidth:128, frameHeight: 128, startFrame:0, endFrame:13});
     }
 
