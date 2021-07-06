@@ -3,7 +3,7 @@ class Platform extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         this.moveSpeed = game.settings.speed;
-        this.ifhuman = Math.floor(Math.random() * 4);
+        this.ifhuman = Math.floor(Math.random() * 5);
         this.ifmale = Math.floor(Math.random() * 2);
         this.position = this.x + Math.floor(Math.random() * 164);
         if(this.ifhuman == 1){
@@ -32,7 +32,7 @@ class Platform extends Phaser.GameObjects.Sprite {
     reset() {
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
         this.x = game.config.width + Math.floor(Math.random() * 65);
-        this.ifhuman = Math.floor(Math.random() * 4);
+        this.ifhuman = Math.floor(Math.random() * 5);
         if(this.ifhuman == 1){
             this.human.reset(this.x);
         }
