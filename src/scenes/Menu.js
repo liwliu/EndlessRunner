@@ -6,11 +6,13 @@ class Menu extends Phaser.Scene {
     preload() {
         //load audio here
         this.load.image('menuBackground', './assets/img/endlessRunnerMenu.png');
+        this.load.audio('jump', './assets/audio/jump.wav');
+        this.load.audio('menuMusic', './assets/audio/menuMusic.wav'); 
     }
 
     create() {
 
-        
+        this.sound.play('menuMusic');
 
         let menuConfig = {
             fontFamily: 'Impact',
