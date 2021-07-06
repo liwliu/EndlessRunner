@@ -53,7 +53,7 @@ class Play extends Phaser.Scene {
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         
         let timeConfig = {
-            fontFamily: 'Impact',
+            fontFamily: 'ShowGothic',
             fontSize: '40px',
             color: '#3CD070',
         }
@@ -74,6 +74,9 @@ class Play extends Phaser.Scene {
         if(this.game.settings.gameOver){
             game.settings.survivalTime = this.timePassed;
             this.scene.start("gameOver");
+            if (game.settings.survivalTime > hiScore){
+                hiScore = game.settings.survivalTime;
+            }
         }
 
         //insert moving background
