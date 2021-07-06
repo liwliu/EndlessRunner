@@ -34,7 +34,12 @@ class Play extends Phaser.Scene {
 
 
         // ANIMATIONS
-        this.anims.create({key: 'ufoAnim', frames: this.anims.generateFrameNumbers('ufo',{start:0, end:13, first:0}), frameRate: 10});
+        this.anims.create({key: 'ufoAnim', frames: this.anims.generateFrameNumbers('ufo',{start:0, end:13, first:0}), frameRate: 10, repeat: -1});
+
+        //UFO
+        this.UFO = this.add.sprite(10, 10, 'ufoAnim').setOrigin(0,0);
+
+        this.UFO.anims.play('ufoAnim');
     }
     update() {
         this.plat1.update();
