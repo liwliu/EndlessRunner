@@ -11,15 +11,25 @@ class Play extends Phaser.Scene {
         this.load.image('alien', './assets/img/characterEndlessRunner.png')
         this.load.image('background', './assets/img/backgroundEndlessRunner.png')
         this.load.spritesheet('ufo', './assets/img/UFO Animation.png', {frameWidth:64, frameHeight:64, startFrame: 0, endFrame:13});
+        this.load.spritesheet('bigUFO', './assets/img/UFOanim.png',{frameWidth:128, frameHeight: 128, startFrame:0, endFrame:13});
     }
 
     create() {
         window.playScene = this;
 
-        //Background
         this.cityBackground = this.add.tileSprite(0,0, 640, 480, 'background').setOrigin(0,0);
+        // ANIMATIONS
+        //this.anims.create({key: 'ufoAnim', frames: this.anims.generateFrameNumbers('ufo',{start:0, end:13, first:0}), frameRate: 10, repeat: -1});
+        this.anims.create({key: 'bigUFO', frames: this.anims.generateFrameNumbers('bigUFO', {start:0, end:13, first:0}), frameRate:10, repeat: -1});
 
+        //UFO
+        this.UFO = this.add.sprite(200, 200, 'bigUFO').setOrigin(0,0);
 
+        this.UFO.anims.play('bigUFO');
+
+        //Background
+
+        this.alien = new Player(this, 100, borderUISize*14 - 32, 'alien', 0).setOrigin(0,0);
         //spawn 3 platforms per level starting at 300 pixels apart
         this.plat1 = new Platform(this, game.config.width + borderUISize*6, borderUISize*2, 'platform', 0).setOrigin(0, 0);
         this.plat2 = new Platform(this, game.config.width + borderUISize*6 - 280, borderUISize*2, 'platform', 0).setOrigin(0, 0);
@@ -38,14 +48,8 @@ class Play extends Phaser.Scene {
         this.plat15 = new Platform(this, game.config.width + borderUISize*6 - 560, borderUISize*14, 'platform', 0).setOrigin(0, 0);
 
 
-        // ANIMATIONS
-        this.anims.create({key: 'ufoAnim', frames: this.anims.generateFrameNumbers('ufo',{start:0, end:13, first:0}), frameRate: 10, repeat: -1});
-
-        //UFO
-        this.UFO = this.add.sprite(10, 10, 'ufoAnim').setOrigin(0,0);
-
-        this.UFO.anims.play('ufoAnim');
     }
+
     update() {
 
         //insert moving background

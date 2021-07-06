@@ -13,6 +13,5 @@ class Human extends Phaser.GameObjects.Sprite {
     reset(platx) {
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
         this.x = platx + Math.floor(Math.random() * 164);
-        console.log(platx, this.x);
     }
 }

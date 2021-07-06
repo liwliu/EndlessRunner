@@ -9,8 +9,7 @@ class Player extends Phaser.GameObjects.Sprite {
         this.MAX_Y_VEL = 5000;
         this.DRAG = 600;    // DRAG < ACCELERATION = icy slide
         this.JUMP_VELOCITY = -1000;
-        this.physics.world.gravity.y = 3000;
-           
+        //this.physics.world.gravity.y = 3000;
     }
 
     update() {
