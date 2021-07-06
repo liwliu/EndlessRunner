@@ -6,10 +6,11 @@ class Play extends Phaser.Scene {
     preload() {
         //load assets here
         this.load.image('platform', './assets/img/platform.png');
-        this.load.image('female', './assets/img/femaleHumanEndless.png')
-        this.load.image('male', './assets/img/maleHumanEndless.png')
-        this.load.image('alien', './assets/img/characterEndlessRunner.png')
-        this.load.image('background', './assets/img/backgroundEndlessRunner.png')
+        this.load.image('female', './assets/img/femaleHumanEndless.png');
+        this.load.image('male', './assets/img/maleHumanEndless.png');
+        this.load.image('alien', './assets/img/characterEndlessRunner.png');
+        this.load.image('background', './assets/img/backgroundEndlessRunner.png');
+        this.load.audio('GameOver', './assets/audio/GameOver.wav'); 
         this.load.spritesheet('bigUFO', './assets/img/UFOanim.png',{frameWidth:128, frameHeight: 128, startFrame:0, endFrame:13});
     }
 
@@ -17,6 +18,7 @@ class Play extends Phaser.Scene {
         window.playScene = this;
         this.gameOver = false;
         menuMusic.stop();
+        
 
         this.cityBackground = this.add.tileSprite(0,0, 640, 480, 'background').setOrigin(0,0);
         // ANIMATIONS
@@ -74,6 +76,7 @@ class Play extends Phaser.Scene {
 
     update() {
         if(this.game.settings.gameOver){
+            this.sound.play('GameOver');
             game.settings.survivalTime = this.timePassed;
             this.scene.start("gameOver");
             
