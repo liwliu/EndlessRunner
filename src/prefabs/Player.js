@@ -4,6 +4,8 @@ class Player extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);
         this.moving = false;
 
+        this.sfxJump = scene.sound.add('jump');
+
         //this.ACCELERATION = 500;
         //this.MAX_X_VEL = 500;   // pixels/second
         //this.MAX_Y_VEL = 5000;
@@ -28,6 +30,7 @@ class Player extends Phaser.GameObjects.Sprite {
                         }
                     },null, this);
                 }
+                this.sfxJump.play();
             }
             if((window.playScene.timePassed > 1) && (Phaser.Input.Keyboard.JustDown(keyS) || !this.checkPlatform(this, window.playScene.plat1) && !this.checkPlatform(this, window.playScene.plat2) && !this.checkPlatform(this, window.playScene.plat3) && !this.checkPlatform(this, window.playScene.plat4) && !this.checkPlatform(this, window.playScene.plat5) && !this.checkPlatform(this, window.playScene.plat6) && !this.checkPlatform(this, window.playScene.plat7) && !this.checkPlatform(this, window.playScene.plat8) && !this.checkPlatform(this, window.playScene.plat9) && !this.checkPlatform(this, window.playScene.plat10) && !this.checkPlatform(this, window.playScene.plat11) && !this.checkPlatform(this, window.playScene.plat12) && !this.checkPlatform(this, window.playScene.plat13) && !this.checkPlatform(this, window.playScene.plat14) && !this.checkPlatform(this, window.playScene.plat15))){
                 this.moving = true;
