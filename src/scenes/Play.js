@@ -8,6 +8,9 @@ class Play extends Phaser.Scene {
         this.load.image('platform', './assets/img/platform.png');
         this.load.image('female', './assets/img/femaleHumanEndless.png')
         this.load.image('male', './assets/img/maleHumanEndless.png')
+        this.load.image('alien', './assets/img/characterEndlessRunner.png')
+        this.load.image('background', './assets/img/backgroundEndlessRunner.png')
+        this.load.spritesheet('ufo', './assets/img/UFO Animation.png', {frameWidth:64, frameHeight:64, startFrame: 0, endFrame:13});
     }
 
     create() {
@@ -28,6 +31,10 @@ class Play extends Phaser.Scene {
         this.plat13 = new Platform(this, game.config.width + borderUISize*6, borderUISize*14, 'platform', 0).setOrigin(0, 0);
         this.plat14 = new Platform(this, game.config.width + borderUISize*6 - 280, borderUISize*14, 'platform', 0).setOrigin(0, 0);
         this.plat15 = new Platform(this, game.config.width + borderUISize*6 - 560, borderUISize*14, 'platform', 0).setOrigin(0, 0);
+
+
+        // ANIMATIONS
+        this.anims.create({key: 'ufoAnim', frames: this.anims.generateFrameNumbers('ufo',{start:0, end:13, first:0}), frameRate: 10});
     }
     update() {
         this.plat1.update();
