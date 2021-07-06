@@ -16,6 +16,7 @@ class Play extends Phaser.Scene {
     create() {
         window.playScene = this;
         this.gameOver = false;
+        menuMusic.stop();
 
         this.cityBackground = this.add.tileSprite(0,0, 640, 480, 'background').setOrigin(0,0);
         // ANIMATIONS
