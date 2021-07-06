@@ -5,7 +5,7 @@ class GameOver extends Phaser.Scene {
 
     create() {
         let menuConfig = {
-            fontFamily: 'Impact',
+            fontFamily: 'ShowGothic',
             fontSize: '40px',
             //backgroundColor: '#D3D3DE',
             color: '#3CD070',
