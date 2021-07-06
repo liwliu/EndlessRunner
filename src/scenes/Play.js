@@ -20,7 +20,7 @@ class Play extends Phaser.Scene {
         this.cityBackground = this.add.tileSprite(0,0, 640, 480, 'background').setOrigin(0,0);
         // ANIMATIONS
         //this.anims.create({key: 'ufoAnim', frames: this.anims.generateFrameNumbers('ufo',{start:0, end:13, first:0}), frameRate: 10, repeat: -1});
-        this.anims.create({key: 'bigUFO', frames: this.anims.generateFrameNumbers('bigUFO', {start:0, end:13, first:0}), frameRate:10, repeat: -1});
+        this.anims.create({key: 'bigUFO', frames: this.anims.generateFrameNumbers('bigUFO', {start:0, end:13, first:0}), frameRate:5, repeat: -1});
 
         //UFO
         this.UFO = this.add.sprite(200, 200, 'bigUFO').setOrigin(0,0);
