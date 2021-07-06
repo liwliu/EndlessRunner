@@ -3,6 +3,13 @@ class Player extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         this.moveSpeed = 2
+
+        this.ACCELERATION = 500;
+        this.MAX_X_VEL = 500;   // pixels/second
+        this.MAX_Y_VEL = 5000;
+        this.DRAG = 600;    // DRAG < ACCELERATION = icy slide
+        this.JUMP_VELOCITY = -1000;
+        this.physics.world.gravity.y = 3000;
            
     }
 
@@ -12,9 +19,9 @@ class Player extends Phaser.GameObjects.Sprite {
             // this.y += this.moveSpeed;
         }
         if (keyA.isDown && this.x >= borderUISize + this.width) {
-            this.x -= this.movementSpeed;
+            this.x -= this.moveSpeed;
         } else if (keyD.isDown && this.x <= game.config.width - borderUISize - this.width) {
-            this.x += this.movementSpeed;
+            this.x += this.moveSpeed;
         }
 
         if (keyS.isDown && this.y > borderUISize){
