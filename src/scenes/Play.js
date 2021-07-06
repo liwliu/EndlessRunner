@@ -57,6 +57,7 @@ class Play extends Phaser.Scene {
             fontSize: '40px',
             color: '#3CD070',
         }
+        this.add.text(350, 10, "TIME:", timeConfig);
 
         this.timePassed = 0;
         this.timeText = this.add.text(500, 10, 0, timeConfig);
@@ -74,9 +75,7 @@ class Play extends Phaser.Scene {
         if(this.game.settings.gameOver){
             game.settings.survivalTime = this.timePassed;
             this.scene.start("gameOver");
-            if (game.settings.survivalTime > hiScore){
-                hiScore = game.settings.survivalTime;
-            }
+            
         }
 
         //insert moving background

@@ -4,6 +4,10 @@ class GameOver extends Phaser.Scene {
     }
 
     create() {
+      if (game.settings.survivalTime > hiScore){
+        hiScore = game.settings.survivalTime;
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding - 100, 'NEW HIGH SCORE!!', menuConfig).setOrigin(0.5);
+      }
         
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'GAME OVER', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'YOU SURVIVED FOR ' + game.settings.survivalTime + ' SECONDS', menuConfig).setOrigin(0.5);
