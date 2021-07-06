@@ -15,6 +15,11 @@ class Play extends Phaser.Scene {
 
     create() {
         window.playScene = this;
+
+        //Background
+        this.cityBackground = this.add.tileSprite(0,0, 640, 480, 'background').setOrigin(0,0);
+
+
         //spawn 3 platforms per level starting at 300 pixels apart
         this.plat1 = new Platform(this, game.config.width + borderUISize*6, borderUISize*2, 'platform', 0).setOrigin(0, 0);
         this.plat2 = new Platform(this, game.config.width + borderUISize*6 - 280, borderUISize*2, 'platform', 0).setOrigin(0, 0);
@@ -42,6 +47,11 @@ class Play extends Phaser.Scene {
         this.UFO.anims.play('ufoAnim');
     }
     update() {
+
+        //insert moving background
+        this.cityBackground.tilePositionX += 3;
+
+
         this.plat1.update();
         this.plat2.update();
         this.plat3.update();
