@@ -15,6 +15,7 @@ class Play extends Phaser.Scene {
 
     create() {
         window.playScene = this;
+        this.gameOver = false;
 
         this.cityBackground = this.add.tileSprite(0,0, 640, 480, 'background').setOrigin(0,0);
         // ANIMATIONS
@@ -28,7 +29,7 @@ class Play extends Phaser.Scene {
 
         //Background
 
-        this.alien = new Player(this, 100, borderUISize*14 - 32, 'alien', 0).setOrigin(0,0);
+
         //spawn 3 platforms per level starting at 300 pixels apart
         this.plat1 = new Platform(this, game.config.width + borderUISize*6, borderUISize*2, 'platform', 0).setOrigin(0, 0);
         this.plat2 = new Platform(this, game.config.width + borderUISize*6 - 280, borderUISize*2, 'platform', 0).setOrigin(0, 0);
@@ -46,14 +47,37 @@ class Play extends Phaser.Scene {
         this.plat14 = new Platform(this, game.config.width + borderUISize*6 - 280, borderUISize*14, 'platform', 0).setOrigin(0, 0);
         this.plat15 = new Platform(this, game.config.width + borderUISize*6 - 560, borderUISize*14, 'platform', 0).setOrigin(0, 0);
 
+        this.alien = new Player(this, 100, borderUISize*14 - 32, 'alien', 0).setOrigin(0,0);
+        
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        
+        let timeConfig = {
+            fontFamily: 'Impact',
+            fontSize: '40px',
+            color: '#3CD070',
+        }
 
+        this.timePassed = 0;
+        this.timeText = this.add.text(500, 10, 0, timeConfig);
+        let x = 0
+        
+        while(x<1000){
+           this.clock = this.time.delayedCall((x * 1000) , () => {
+                this.timeText.text = this.timePassed++;
+           },null, this);
+           x++;
+        }
     }
 
     update() {
+        if(this.game.settings.gameOver){
+            game.settings.survivalTime = this.timePassed;
+            this.scene.start("gameOver");
+        }
 
         //insert moving background
         this.cityBackground.tilePositionX += 3;
-
 
         this.plat1.update();
         this.plat2.update();
@@ -70,6 +94,8 @@ class Play extends Phaser.Scene {
         this.plat13.update();
         this.plat14.update();
         this.plat15.update();
+        this.alien.update();
     }
+
 
 }

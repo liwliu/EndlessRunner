@@ -1,21 +1,9 @@
-class Menu extends Phaser.Scene {
+class GameOver extends Phaser.Scene {
     constructor() {
-        super("menuScene");
-    }
-
-    preload() {
-        //load audio here
-        this.load.image('menuBackground', './assets/img/endlessRunnerMenu.png');
-        this.load.audio('jump', './assets/audio/jump.wav');
-        this.load.audio('menuMusic', './assets/audio/menuMusic.wav'); 
+        super("gameOver");
     }
 
     create() {
-
-       let menuMusic = this.sound.add('menuMusic');
-       menuMusic.play({loop: true});
-       
-
         let menuConfig = {
             fontFamily: 'Impact',
             fontSize: '40px',
@@ -28,12 +16,10 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
-
-        //menu background
-        this.newMenu - this.add.tileSprite(0,0, 640, 480, 'menuBackground').setOrigin(0,0);
         
-        //this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ALIEN INVASION', menuConfig).setOrigin(0.5);
-        //this.add.text(game.config.width/2, game.config.height/2, 'USE SPACE TO START', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'GAME OVER', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2, 'YOU SURVIVED FOR ' + game.settings.survivalTime + ' SECONDS', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + 42, 'USE SPACE TO RESTART', menuConfig).setOrigin(0.5);
         
         
         /*menuConfig.backgroundColor = '#00FF00';
@@ -47,8 +33,7 @@ class Menu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
           game.settings = {
             speed: 4,
-            gameOver: false,
-            survivalTime: 0
+            gameOver: false
           }
           this.scene.start("playScene");    
         }
